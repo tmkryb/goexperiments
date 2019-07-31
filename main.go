@@ -13,12 +13,12 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Joł, mój pierwszy request w GO!")
 }
 
-func help(w http.ResponseWriter, r *http.Request) {
+func about(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "To jest inny route")
 }
 
 func handleRequests() {
 	http.HandleFunc("/", homePage)
-	http.HandleFunc("/about", help)
+	http.HandleFunc("/about", about)
 	http.ListenAndServe(":8081", nil)
 }
