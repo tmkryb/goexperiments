@@ -31,6 +31,14 @@ func AddNewUser(user *models.User) (*models.User, error) {
 	return user, db.Error
 }
 
+func DeleteUser(userId int) error {
+	db, err := initDB()
+	if err == nil {
+		db.Where("ID = ?", userId).Delete(models.User{})
+	}
+	return db.Error
+}
+
 func GetAllUsers() (*[]models.User, error) {
 	db, err := initDB()
 	users := make([]models.User, 1)
